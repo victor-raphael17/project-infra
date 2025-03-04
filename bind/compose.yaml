@@ -14,7 +14,7 @@ services:
       - ./run:/run/named
     networks:
       sharednet:
-        ipv4_address: 172.20.0.1
+        ipv4_address: 172.20.0.2
 
 networks:
   sharednet:

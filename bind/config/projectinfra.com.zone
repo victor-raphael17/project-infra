@@ -1,0 +1,32 @@
+$TTL 84600
+$ORIGIN projectinfra.com.
+
+@       IN      SOA     ns1.projectinfra.com. admin.projectinfra.com. (
+                        20250304 ; serial number (increment on update)
+                        3600       ; refresh period (1 hour)
+                        600        ; retry period (10 minutes)
+                        604800     ; expire time (7 days)
+                        1800       ; negative caching TTL (30 minutes)
+                        )
+
+        IN      NS      ns1.projectinfra.com.
+
+ns1     IN      A       172.20.0.2
+gitlab  IN      A       172.20.0.3
+mail    IN      A       192.168.0.11
+@       IN      MX      10 mail.projectinfra.com.
+autodiscover    IN      CNAME mail.projectinfra.com.
+autoconfig      IN      CNAME mail.projectinfra.com.
+runner  IN      A       172.20.0.4
+
+dkim._domainkey IN TXT (
+  "v=DKIM1;k=rsa;t=s;s=email;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A"
+  "MIIBCgKCAQEAvM5TuGIy2qiEE95cL0nP7zVllykX3XfT38B38yV/wUJev+k+0Un2EI4d2xay98"
+  "4cpfgcx3lZW1YQgjlYAHgFLf152zbSWT5g1Zx9Yk/H1MGyCqKxVpBL4od5rD/7ElaRxr+tQVdW"
+  "zcrCIETEr6FpvjZHpS/jGbJTKTRxsyhGq/AvB7xo1saqmWkfs0nW77LAogDSYXs+aRKTm2CxA2"
+  "haVm4I+20167R/d9ElT0+1GsvSmzszWabE+PbAuh/ljliGdqnMG8hEcnnO++YuiZO1J60+v1jF"
+  "LAh6YAzkkKY1XEy7Lb+yfqHx7L/XGh02hD5TUKB25ZDl8vvEX/YI/XXeCwIDAQAB"
+)
+
+_dmarc    IN TXT  "v=DMARC1; p=none; rua=mailto:dmarc@projectinfra.com"
+@         IN TXT  "v=spf1 a mx -all"

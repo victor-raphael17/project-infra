@@ -1,0 +1,14 @@
+$TTL 86400 ; Time to live
+$ORIGIN 0.168.192.in-addr.arpa. ; Define the base domain name that will be used to resolve relative domain names within the zone file.
+
+@       IN      SOA     ns1.projectinfra.com. admin.projectinfra.com. (
+                        20250304 ; Serial number (increment on update)
+                        3600       ; Refresh period (1 hour)
+                        600        ; Retry period (10 minutes)
+                        604800     ; Expire time (7 days)
+                        1800       ; Negative caching TTL (30 minutes)
+                        )
+
+        IN      NS      ns1.projectinfra.com.
+
+11      IN      PTR     mail.projectinfra.com.
