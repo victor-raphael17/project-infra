@@ -1,0 +1,21 @@
+services:
+  bind:
+    container_name: bind
+    image: ubuntu/bind9:latest
+    environment:
+      - BIND9_USER=root
+      - TZ=America/Sao_Paulo
+    ports:
+      - 53:53
+    volumes:
+      - ./config:/etc/bind
+      - ./cache:/var/cache/bind
+      - ./records:/var/lib/bind
+      - ./run:/run/named
+    networks:
+      sharednet:
+        ipv4_address: 172.20.0.1
+
+networks:
+  sharednet:
+    external: true          
